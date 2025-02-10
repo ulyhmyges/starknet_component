@@ -1,21 +1,30 @@
-## Create a ERC20 token from scratch with Cairo
+# School Project
 
-### Contract
-- name : SimpleERC2OContract
-- path : src/core/simpleERC20.cairo
+## Create a Component from an ERC20 token with Cairo
+
+### Contracts
+
+- name: erc20enable_component
+- path: src/core/component.cairo
+
+- name: ERC20Contract
+- path: src/core/use_component.cairo
 
 ### Build project
-```
+
+```sh
 scarb build
 ```
 
 ### Declare contract
-```
+
+```sh
 starkli declare --network=sepolia --keystore=$STARKNET_KEYSTORE --account=$STARKNET_ACCOUNT target/dev/<CONTRACT>_class.json
 ```
 
 ### Deploy contract on Sepolia
-```
+
+```sh
 starkli deploy 
 --network=sepolia 
 --keystore=$STARKNET_KEYSTORE 
@@ -24,8 +33,10 @@ starkli deploy
 50 358434828907 5461067 <OWNER ADDRESS>
 ```
 
-starkli deploy 
---network=sepolia 
---keystore=$STARKNET_KEYSTORE 
---account=$STARKNET_ACCOUNT 
-0x04355e870ce28a3832398ea3948ad8134c11c170a3b6c12f3208090d06e27213 1414091849
+Environment variables are defined in .env file (STARKNET_KEYSTORE, STARKNET_ACCOUNT, etc...)
+
+Example:
+
+```sh
+starkli deploy --network=sepolia --keystore=$STARKNET_KEYSTORE --account=$STARKNET_ACCOUNT 0x01ab09040e92f916a6871d6651dd49cfc75797d60b23e10a0d16118268739dd3 500000 1414091849 1414091849 0x00a73a3EeDe589E6b4596915329a5f056294D1f479172788f8bbD438e012E995
+```
