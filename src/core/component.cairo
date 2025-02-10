@@ -57,4 +57,17 @@ pub mod erc20enable_component {
         }
     }
 
+    #[generate_trait]
+    pub impl ERC20enableInternalImpl<
+        TContractState, +HasComponent<TContractState>,
+    > of ERC20enableInternalTrait<TContractState> {
+        fn _init(ref self: ComponentState<TContractState>, totalSupply: u128, name: felt252, symbol: felt252, owner: ContractAddress) {
+            self.erc20enable_totalSupply.write(totalSupply);
+            self.erc20enable_name.write(name);
+            self.erc20enable_symbol.write(symbol);
+            self.erc20enable_owner.write(owner);
+            self.erc20enable_balance.entry(owner).write(totalSupply);
+        }
+    }
+
 }
